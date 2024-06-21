@@ -18,14 +18,14 @@ export default defineConfig(({ mode }) => ({
         inlineStylesExtension: 'scss',
       },
       // ssr:false,
-      prerender: {
-        routes: async () => {
-          return [
-            '/',
-            '/sellers'
-          ];
-        },
-      },
+      // prerender: {
+      //   routes: async () => {
+      //     return [
+      //       '/',
+      //       '/sellers'
+      //     ];
+      //   },
+      // },
     }),
   ],
   
