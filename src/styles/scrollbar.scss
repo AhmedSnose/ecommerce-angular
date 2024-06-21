@@ -1,0 +1,60 @@
+@mixin scrollbar-styles(
+  $scrollbar-thumb-color: $default-scrollbar-thumb-color,
+  $scrollbar-thumb-hover-color: $default-scrollbar-thumb-hover-color,
+  $scrollbar-track-color: $default-scrollbar-track-color
+) {
+  &::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $scrollbar-track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb-color;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $scrollbar-thumb-hover-color;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb-color;
+    border-radius: 10px;
+  }
+
+  &:hover::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none; 
+  }
+}
+
+.checkout-scrollable-element {
+  @include scrollbar-styles(
+    $scrollbar-thumb-color: $color-plate-color-2 !important,
+    $scrollbar-track-color: rgba(255, 255, 255, 0.1)
+  );
+}
+
+html {
+  @include scrollbar-styles(
+    $scrollbar-thumb-color: $color-plate-color-2,
+    $scrollbar-thumb-hover-color: rgba(0, 0, 0, 0.7),
+    $scrollbar-track-color: #fff
+  );
+}

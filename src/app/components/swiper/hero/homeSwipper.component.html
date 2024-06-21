@@ -1,0 +1,29 @@
+<div class="swiper hero-swiper relative top-0 w-full z-[-1] bg-black">
+  <swiper-container slidesPerView="1" speed="1500" loop="true" mousewheel="true" keyboard="true" autoplay="true"
+    spaceBetween="30" effect="'coverflow'" mousewheel-force-to-axis="true">
+
+    <swiper-slide *ngFor="let item of slidersData">
+
+      <div class="hero-content flex flex-col items-start justify-center h-screen" style="
+                  background: linear-gradient(rgb(0 0 0 / 56%), rgb(0 0 0 / 55%)),url('{{ item.img }}');
+                  background-repeat: no-repeat;
+                  background-position: center center;
+                  background-size: cover;">
+
+
+        <!-- <img [src]="item.img" alt="Slide 1 description" class="h-full w-full object-cover object-center opacity-75" /> -->
+
+        <div class="text-left px-6 md:px-8 lg:px-10 text-white absolute top-1/2 transform -translate-y-1/2">
+          <h2 class="text-3xl md:text-5xl font-medium mb-6 uppercase font-[MynerveSemiBold]">{{ item.title }}</h2>
+          <p class="max-w-md font-light mb-8 font-[MynerveSemiBold]">{{ item.description }} </p>
+          @if (item.buttonUrl) {
+          <div class="flex gap-4">
+            <a [href]="item.buttonUrl" class="glow-on-hover uppercase font-[MynerveSemiBold]"> {{ item.buttonName }}
+            </a>
+          </div>
+          }
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div>

@@ -1,0 +1,84 @@
+<div>
+  <mat-toolbar class="bg-main-color-two">
+    <mat-toolbar-row class="justify-between">
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <app-logo [width]="70"></app-logo>
+
+      <div fxShow="true" fxHide.lt-md class="space-x-4 uppercase font-semibold">
+        <span [routerLink]="['groups']" class="hover-underline-animation">Groups</span>
+        <span [routerLink]="['products']" class="hover-underline-animation">Products</span>
+        <span [routerLink]="['sellers']" class="hover-underline-animation">Sellers</span>
+      </div>
+
+
+      <div fxShow="true" fxHide.lt-md class="space-x-4 uppercase font-semibold">
+
+        @if(authService.currentUserSig() === null) {
+        <a [routerLink]="['login']" class="hover-underline-animation">Log in</a>
+        <a [routerLink]="['register']" class="hover-underline-animation">Register</a>
+        } @else {
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+          <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" pBadge styleClass=""
+            size="normal" />
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>person_pin</mat-icon>
+            <span>Profile</span>
+          </button>
+          <button (click)="logout()" mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+        }
+
+        <a [routerLink]="['cart']" class="hover-underline-animation">
+          <mat-icon aria-hidden="false" aria-label="Cart" fontIcon="shopping_cart"
+            class="cart-icon">shopping_cart</mat-icon>
+          <span *ngIf="cartItemsLength$ | async" class="cart-badge bg-main-color-one text-white">{{
+            cartItemsLength$ | async
+            }}</span>
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill class="fullscreen-nav">
+    <mat-sidenav #sidenav class="fullscreen-nav">
+      <mat-nav-list>
+        <!-- <a (click)="sidenav.toggle()" class="hover-underline-animation"  mat-list-item>Close</a> -->
+        @if(authService.currentUserSig() === null) {
+        <a (click)="sidenav.toggle()" class="hover-underline-animation" [routerLink]="['login']" mat-list-item>Log
+          in</a>
+        <a (click)="sidenav.toggle()" class="hover-underline-animation" [routerLink]="['register']"
+          mat-list-item>Register</a>
+
+        }
+        <a (click)="sidenav.toggle()" class="hover-underline-animation" [routerLink]="['groups']"
+          mat-list-item>Groups</a>
+        <a (click)="sidenav.toggle()" class="hover-underline-animation" [routerLink]="['products']"
+          mat-list-item>Products</a>
+        <a (click)="sidenav.toggle()" class="hover-underline-animation" [routerLink]="['sellers']"
+          mat-list-item>Sellers</a>
+
+        <a (click)="sidenav.toggle()" [routerLink]="['cart']" mat-list-item class="relative hover-underline-animation">
+          <mat-icon aria-hidden="false" aria-label="Cart" fontIcon="shopping_cart"
+            class="cart-icon">shopping_cart</mat-icon>
+          <span *ngIf="cartItemsLength$ | async"
+            class="cart-badge !relative !rounded-md bg-main-color-one text-white">{{
+            cartItemsLength$ | async
+            }}</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill>
+
+      <ng-content></ng-content>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

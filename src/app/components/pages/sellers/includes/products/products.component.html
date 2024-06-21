@@ -1,0 +1,41 @@
+<section
+class="mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-between gap-5 mt-7 mb-5">
+@for (product of products; track $index) {
+<div class="w-full product bg-white duration-500 hover:scale-105 hover:shadow-xl">
+  <a [routerLink]="['/products' , product.items[0].slug]">
+    <img [src]="product.items[0].images[0]" alt="Product" class="h-80 w-full object-contain rounded-t-xl" />
+    <div class="product-info px-4 py-3">
+      <span class="text-main-color-fourth mr-3 uppercase text-xs">{{
+        product.category.name
+        }}</span>
+      <p class="text-lg font-bold text-main-color truncate block capitalize">
+        {{ product.name }}
+      </p>
+      <!--               
+        <p class="text-lg font-semibold text-black cursor-auto">
+          {{ productItem.price }} EGP
+        </p>
+-->
+      <!-- <del>
+<p class="text-sm text-gray cursor-auto ml-2">{{ productItem.price }}</p>
+</del> -->
+
+
+      @if(product.availableColors?.length) {
+      <div class="flex items-center">
+        <div class="flex items-center mt-1">
+          @for (c of product.availableColors; track $index) {
+          <button [ngStyle]="{ backgroundColor: c.color }"
+            class="h-5 w-5 rounded-full border-2 border-[#A79277] mr-2 focus:outline-none"></button>
+          }
+        </div>
+      </div>
+      } @else {
+        <span class="h-5 w-5 rounded-full mr-2"></span>
+        <!-- all products type peculiars will be added , so this is workaround for a while -->
+      }
+
+    </div>
+  </a>
+</div> }
+</section>

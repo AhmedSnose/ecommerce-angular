@@ -1,0 +1,18 @@
+.cart-icon {
+    vertical-align: middle; /* Align icon and badge vertically */
+  }
+  
+  .cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%; /* Make the badge circular */
+    padding: 4px 8px; /* Adjust padding as needed */
+    font-size: 10px; /* Adjust font size as needed */
+    transform: translate(50%, -50%); /* Positioning trick to center the badge */
+  }
+  
+  .fullscreen-nav{
+    width: 100% !important;
+    height: 100% !important;
+}

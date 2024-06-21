@@ -1,0 +1,226 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$analog-primary: mat.define-palette(mat.$indigo-palette);
+$analog-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$analog-warn: mat.define-palette(mat.$red-palette);
+$analog-theme: mat.define-light-theme((color: (primary: $analog-primary,
+        accent: $analog-accent,
+        warn: $analog-warn,
+      ),
+    ));
+
+@include mat.all-component-themes($analog-theme);
+
+/* Tailwind directives  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './app/directives/loading/loading.directive.scss';
+@import "../node_modules/primeng/resources/themes/lara-light-blue/theme.css";
+@import "../node_modules/primeng/resources/primeng.css";
+
+
+$color-plate-color-1:#A79277;
+$color-plate-color-2:#D1BB9E;
+$color-plate-color-3:#EAD8C0;
+$color-plate-color-4:#FFF2E1;
+
+
+$default-scrollbar-thumb-color: rgba(0, 0, 0, 0.201);
+$default-scrollbar-thumb-hover-color: rgba(0, 0, 0, 0.7);
+$default-scrollbar-track-color: transparent;
+
+@font-face {
+  font-family: 'MynerveSemiBold';
+  src: url('assets/fonts/rajdhani/Rajdhani-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import "./styles/main.scss";
+
+
+body{
+  background-color: $color-plate-color-4;
+  font-family: MynerveSemiBold;
+}
+
+
+// color 1
+
+.bg-main-color-one {
+  background-color: $color-plate-color-1 !important;
+}
+
+.text-main-color  { // text-main-color-one
+  color: $color-plate-color-1 !important;
+}
+
+
+// color 2
+
+.bg-main-color-two{
+  background-color: $color-plate-color-2 !important;
+}
+
+.text-main-color-two {
+  color: $color-plate-color-2 !important;
+}
+
+.border-color-two {
+  border: 1px solid $color-plate-color-2 !important;
+}
+// color 3
+
+.bg-main-color-three{
+  background-color: $color-plate-color-3 !important;
+}
+
+.text-main-color-three {
+  color: $color-plate-color-3 !important;
+}
+
+// color 4
+
+.bg-main-color{ // bg-main-color-fourth
+  background-color: $color-plate-color-4 !important;
+}
+
+.text-main-color-fourth {
+  color: $color-plate-color-4 !important;
+}
+
+.border-color-fourth {
+  border: 1px solid $color-plate-color-4 !important;
+}
+
+
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #333;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+// swiper
+
+.swiper img {
+  width: 100%;
+}
+
+
+
+
+
+
+
+/* You can add global styles to this file, and also import other style files */
+/* :root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+} */
+
+// a {
+//   font-weight: 500;
+//   color: #646cff;
+//   text-decoration: inherit;
+// }
+// a:hover {
+//   color: #535bf2;
+// }
+
+// /* body {
+//   margin: 0;
+//   display: flex;
+//   place-items: center;
+//   min-width: 320px;
+//   min-height: 100vh;
+// } */
+
+// h1 {
+//   font-size: 3.2em;
+//   line-height: 1.1;
+// }
+
+// button {
+//   border-radius: 8px;
+//   border: 1px solid transparent;
+//   padding: 0.6em 1.2em;
+//   font-size: 1em;
+//   font-weight: 500;
+//   font-family: inherit;
+//   background-color: #1a1a1a;
+//   cursor: pointer;
+//   transition: border-color 0.25s;
+// }
+// button:hover {
+//   border-color: #646cff;
+// }
+// button:focus,
+// button:focus-visible {
+//   outline: 4px auto -webkit-focus-ring-color;
+// }
+
+// .card {
+//   padding: 2em;
+// }
+
+// .logo {
+//   @apply box-content;
+// }
+
+// @media (prefers-color-scheme: light) {
+//   :root {
+//     color: #213547;
+//     background-color: #ffffff;
+//   }
+//   a:hover {
+//     color: #747bff;
+//   }
+//   button {
+//     background-color: #f9f9f9;
+//   }
+// }
+
+
+.circlize {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

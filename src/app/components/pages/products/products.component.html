@@ -1,0 +1,92 @@
+<form class="flex justify-center items-center shadow-lg bg-main-color-three" [formGroup]="productsForm">
+  <div class="flex w-[50rem] rounded-md  m-10">
+    <input class="w-full border-none bg-transparent px-4 py-1 text-main-color focus:outline-none"
+      placeholder="Search Product" [matAutocomplete]="auto" formControlName="productNameInput" />
+    <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption class="w-full bg-pink-100">
+      <mat-option *ngFor="let product of filteredProducts | async" [value]="product.name">
+        <span>{{ product.name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+
+
+    <!-- <input class="w-full border-none bg-transparent px-4 py-1 text-gray-900 focus:outline-none" placeholder="Seller"
+      [matAutocomplete]="sellerLockUpsAutoComplete" formControlName="sellerNameInput" /> -->
+    <!-- <mat-autocomplete #sellerLockUpsAutoComplete="matAutocomplete" autoActiveFirstOption
+      class="w-full bg-pink-100">
+      <mat-option *ngFor="let seller of sellersLockUps" [value]="seller.sellerName">
+        <span>{{ seller.sellerName }}</span>
+      </mat-option>
+    </mat-autocomplete> -->
+    <mat-select [(value)]="searchAttributes.sellerId"
+    (selectionChange)="onSellerDropDownChange($event.value)"
+      class="w-full my-4 border-none bg-transparent px-4 py-1 text-main-color focus:outline-none" placeholder="Seller"
+      >
+      <mat-option *ngFor="let seller of sellersLockUps" [value]="seller.sellerId">
+        {{ seller.sellerName }}
+      </mat-option>
+    </mat-select>
+
+    <mat-select [(value)]="searchAttributes.groupId"
+    (selectionChange)="onGroupDropDownChange($event.value)"
+      class="w-full my-4 border-none bg-transparent px-4 py-1 text-main-color focus:outline-none" placeholder="Group"
+      >
+      <mat-option *ngFor="let group of groupsLockUps" [value]="group.groupId">
+        {{ group.groupName }}
+      </mat-option>
+    </mat-select>
+
+    <!-- <button [ngClass]="{
+        'bg-green-100':
+          productsForm.get('productNameInput')?.valid && productsForm.get('productNameInput')?.value
+      }" class="m-2 rounded px-4 py-2 font-semibold bg-gray-100"
+      [disabled]="productsForm.get('productNameInput')?.value">
+      search
+    </button> -->
+  </div>
+</form>
+
+<div class="z-10 bg-main-color">
+  <div class="max-w-screen-xl mx-auto p-3 sm:p-5 md:p-7">
+    <section
+      class="mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-between gap-5 mt-7 mb-5">
+      @for (product of filteredProducts | async; track $index) {
+      <div class="w-full border-color-two bg-white duration-500 hover:scale-105 hover:shadow-xl">
+        <a [routerLink]="['/products' , product.items[0].slug]">
+          <img [src]="product.items[0].images[0]" alt="Product" class="h-80 w-full object-contain rounded-t-xl" />
+          <div class="bg-main-color-two px-4 py-3">
+            <span class="text-main-color-fourth mr-3 uppercase text-xs">{{
+              product.category.name
+              }}</span>
+            <p class="text-lg font-bold text-main-color truncate block capitalize">
+              {{ product.name }}
+            </p>
+            <!--               
+              <p class="text-lg font-semibold text-black cursor-auto">
+                {{ productItem.price }} EGP
+              </p>
+   -->
+            <!-- <del>
+     <p class="text-sm text-gray cursor-auto ml-2">{{ productItem.price }}</p>
+    </del> -->
+
+
+            @if(product.availableColors?.length) {
+            <div class="flex items-center">
+              <div class="flex items-center mt-1">
+                @for (c of product.availableColors; track $index) {
+                <button [ngStyle]="{ backgroundColor: c.color }"
+                  class="h-5 w-5 rounded-full border-2 border-[#A79277] mr-2 focus:outline-none"></button>
+                }
+              </div>
+            </div>
+            } @else {
+              <span class="h-5 w-5 rounded-full mr-2"></span>
+              <!-- all products type peculiars will be added , so this is workaround for a while -->
+            }
+
+          </div>
+        </a>
+      </div> }
+    </section>
+  </div>
+</div>
