@@ -3,8 +3,8 @@ import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import gsap from 'gsap-trial/dist/gsap';
-import ScrollToPlugin from 'gsap-trial/dist/ScrollToPlugin';
+import gsap from 'gsap';
+import ScrollToPlugin from 'gsap/dist/ScrollToPlugin';
 
 export const isAuthenticatedGuard: CanActivateFn = (route,state) => {
   const url = state.url.substring(1);

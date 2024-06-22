@@ -14,19 +14,12 @@ import { MenubarComponent } from './components/header/menubar/menubar.component'
 import { HomeFooterComponent } from './components/footer/footer.component';
 import { cartEffects } from './store/cart/effects';
 import { CartService } from './services/cart.service';
-import gsap from 'gsap-trial/dist/gsap';
-import ScrollSmoother from 'gsap-trial/dist/ScrollSmoother';
-import ScrollTrigger from 'gsap-trial/dist/ScrollTrigger';
+import gsap from 'gsap';
+
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+
 import { AuthService } from './services/auth.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
-import {
-  MatSnackBar,
-  MatSnackBarAction,
-  MatSnackBarActions,
-  MatSnackBarLabel,
-  MatSnackBarRef,
-} from '@angular/material/snack-bar';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +35,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   `,
 })
 export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
-  smoother:any;
   private _platformId = inject(PLATFORM_ID);
 
   constructor(
@@ -53,29 +45,22 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   ngOnInit(): void {
     if (isPlatformBrowser(this._platformId)) {
       this.authService.loadToken();
-    }
+  }
+  
   }
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this._platformId)) {
-      gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-      this.smoother = ScrollSmoother.create({
-        content: '#smooth-content',
-        wrapper: 'my-app',
-        smooth: 2,
-      });
+      gsap.registerPlugin(ScrollTrigger);
 
-      ScrollTrigger.addEventListener('refresh', () => {
-        console.log('initial body inline styles:', document.body.style.cssText);
-      });
-      setTimeout(() => {
-        this.smoother.effects('[data-speed], [data-lag]');
-        console.log(
-          'after creating effects, body inline styles:',
-          document.body.style.cssText
-        );
-        ScrollTrigger.refresh();
-      }, 50);
+      // console.log(LocomotiveScroll, 'LocomotiveScroll');
+  
+
+      // this.smoother = ScrollSmoother.create({
+      //   content: '#smooth-content',
+      //   wrapper: 'my-app',
+      //   smooth: 2,
+      // });
 
       gsap.to('.faq-scrollTrigger-animation', {
         x: '0',
