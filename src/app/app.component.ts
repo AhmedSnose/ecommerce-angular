@@ -50,30 +50,30 @@ export class AppComponent implements OnDestroy, OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (isPlatformBrowser(this._platformId)) {
-      gsap.registerPlugin(ScrollTrigger);
+    // if (isPlatformBrowser(this._platformId)) {
+    //   gsap.registerPlugin(ScrollTrigger);
 
-      // console.log(LocomotiveScroll, 'LocomotiveScroll');
+    //   // console.log(LocomotiveScroll, 'LocomotiveScroll');
   
 
-      // this.smoother = ScrollSmoother.create({
-      //   content: '#smooth-content',
-      //   wrapper: 'my-app',
-      //   smooth: 2,
-      // });
+    //   // this.smoother = ScrollSmoother.create({
+    //   //   content: '#smooth-content',
+    //   //   wrapper: 'my-app',
+    //   //   smooth: 2,
+    //   // });
 
-      gsap.to('.faq-scrollTrigger-animation', {
-        x: '0',
-        duration: 1,
-        opacity: 1,
-        scrollTrigger: {
-          trigger: '.faq-scrollTrigger-animation',
-          start: 'top 100%',
-          end: 'top 10%',
-          scrub: true,
-        },
-      });
-    }
+    //   gsap.to('.faq-scrollTrigger-animation', {
+    //     x: '0',
+    //     duration: 1,
+    //     opacity: 1,
+    //     scrollTrigger: {
+    //       trigger: '.faq-scrollTrigger-animation',
+    //       start: 'top 100%',
+    //       end: 'top 10%',
+    //       scrub: true,
+    //     },
+    //   });
+    // }
   }
   ngOnDestroy(): void {}
 }

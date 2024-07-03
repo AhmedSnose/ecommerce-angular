@@ -771,7 +771,7 @@ export const slidersData:SliderDataIF[] = [
     buttonUrl: '#',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s ',
-    img: 'src/assets/swiper/home/1.avif',
+    img: 'swiper/home/1.avif',
     title: 'Slide one',
   },
   {
@@ -779,7 +779,7 @@ export const slidersData:SliderDataIF[] = [
     buttonUrl: '#',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s ',
-    img: 'src/assets/swiper/home/2.avif',
+    img: 'swiper/home/2.avif',
     title: 'Slide two',
   },
   {
@@ -787,7 +787,7 @@ export const slidersData:SliderDataIF[] = [
     buttonUrl: '#',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s ',
-    img: 'src/assets/swiper/home/3.avif',
+    img: 'swiper/home/3.avif',
     title: 'Slide three',
   }
 ];

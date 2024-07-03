@@ -14,21 +14,22 @@
       </div>
 
 
-      <div fxShow="true" fxHide.lt-md class="space-x-4 uppercase font-semibold">
+      <div fxShow="true" fxHide.lt-md class="space-x-4 uppercase font-semibold !flex justify-center items-center">
 
         @if(authService.currentUserSig() === null) {
         <a [routerLink]="['login']" class="hover-underline-animation">Log in</a>
         <a [routerLink]="['register']" class="hover-underline-animation">Register</a>
         } @else {
-        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <button  [matMenuTriggerFor]="userMenu">
           <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" pBadge styleClass=""
             size="normal" />
         </button>
+
         <mat-menu #userMenu="matMenu">
-          <button mat-menu-item>
+          <!-- <button mat-menu-item>
             <mat-icon>person_pin</mat-icon>
             <span>Profile</span>
-          </button>
+          </button> -->
           <button (click)="logout()" mat-menu-item>
             <mat-icon>exit_to_app</mat-icon>
             <span>Logout</span>

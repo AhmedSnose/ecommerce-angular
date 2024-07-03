@@ -10,15 +10,15 @@ import { FAQData } from '../../../../../DATA';
       .faq {
         overflow-x: hidden !important;
       }
-      .faq-question {
-        transform: translate(52vw, 0px);
-      }
-      .faq-answer {
-        transform: translate(-52vw, 0px);
-      }
-      .faq-scrollTrigger-animation {
-        opacity: 0;
-      }
+      // .faq-question {
+      //   transform: translate(52vw, 0px);
+      // }
+      // .faq-answer {
+      //   transform: translate(-52vw, 0px);
+      // }
+      // .faq-scrollTrigger-animation {
+      //   opacity: 0;
+      // }
     `,
   ],
 })

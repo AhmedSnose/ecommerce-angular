@@ -16,7 +16,7 @@ import { AuthService } from '../../services/auth.service';
         <div
           class="mt-5 lg:w-[28rem] mx-auto my-auto flex flex-col justify-center pt-8 md:justify-start md:px-6 md:pt-0"
         >
-          <button
+          <!-- <button
             class="-2 mt-8 flex items-center justify-center rounded-md  px-4 py-1 outline-none ring-offset-2 transition focus:ring-2 hover:border-transparent border-color-fourth hover:bg-black hover:text-white"
           >
             <img
@@ -32,7 +32,7 @@ import { AuthService } from '../../services/auth.service';
             >
               or
             </div>
-          </div>
+          </div> -->
 
           <form
             [formGroup]="loginForm"
@@ -132,14 +132,15 @@ export default class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
       {
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        email: ['admin@a.com', [Validators.required, Validators.email]],
+        password: ['admin@a.com', [Validators.required, Validators.minLength(6)]],
       }
     );
   }
@@ -160,6 +161,7 @@ export default class LoginPage implements OnInit {
       username: formData.firstName + ' ' + formData.lastName,
     };
     this.authService.login(_user);
+    this.router.navigate(['/']);
   }
 
   onReset() {

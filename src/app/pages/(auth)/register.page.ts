@@ -12,10 +12,6 @@ import { AuthService } from '../../services/auth.service';
 import {isAuthenticatedGuard} from "../../guards/isAuthenticated.guard"
 import { RouteMeta } from '@analogjs/router';
 
-export const routeMeta: RouteMeta = {
-  title: 'Cart',
-  canActivate: [()=>false],
-};
 
 @Component({
   selector: 'app-register-page',
@@ -23,11 +19,13 @@ export const routeMeta: RouteMeta = {
   imports: [ReactiveFormsModule, NgClass, NgIf, RouterLink],
   template: `
     <div class="flex flex-wrap bg-main-color-three">
+
       <div class="flex w-full flex-col md:w-1/2">
+
         <div
           class="mt-5 lg:w-[28rem] mx-auto my-auto flex flex-col justify-center pt-8 md:justify-start md:px-6 md:pt-0"
         >
-          <button
+          <!-- <button
             class="-2 mt-8 flex items-center justify-center rounded-md  px-4 py-1 outline-none ring-offset-2 transition focus:ring-2 hover:border-transparent border-color-fourth hover:bg-black hover:text-white"
           >
             <img
@@ -37,13 +35,14 @@ export const routeMeta: RouteMeta = {
             />
             Log in with Google
           </button>
+
           <div class="relative mt-8 flex h-px place-items-center bg-main-color">
             <div
               class="absolute left-1/2 h-6 w-14 -translate-x-1/2 bg-main-color text-center text-sm text-main-color"
             >
               or
             </div>
-          </div>
+          </div> -->
 
           <form
             [formGroup]="registerForm"
